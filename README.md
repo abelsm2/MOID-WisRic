@@ -12,7 +12,7 @@ I did not make any real attempt to optimize the code or use more modern programm
 ## GNU OCTAVE RESULTS
 Running the MOID_Test script on Octave will execute 20 tests which should result in the table below.  This has not been tested in Matlab but should probably work there as well.  On a Ryzen R7 3800XT the time Elapsed for 20 test cases: 0.789262 seconds (Average of ~40 ms per iteration).
 
-Test  | MOID - Calc | MOID - Expected | Dmin-Calc | Dmin Expected 
+Test  | MOID Calc | MOID Expected | Dmin Calc | Dmin Expected 
  ------|----------------|-------------------------|------------------|------------------
 1 |      0.13455874619444 |       0.13455874348909  |      0.13467195  |    0.13467190
 2 |      0.00289925626282 |       0.00289925623680  |      0.01513159   |   0.01513160
