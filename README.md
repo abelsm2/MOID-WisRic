@@ -2,12 +2,15 @@
 Implementation of Minimum Orbit Intersection Distance Algorithms
 
 ## BACKGROUND
+I found some Fortran code created by various researchers for the calculation of MOID.  This repo is simply a conversion of those codes into other languages that I found useful along with tests to show that the code is working properly.  As you can see below, I was able to get pretty decent matches to the values published by the original authors with the differences possibly due to a more precise value of Pi being used within Octave and C++.
 
-## ORIGINAL FORTRAN
-http://moid.cbk.waw.pl/orbity/static/MOID.F
+I did not make any real attempt to optimize the code or use more modern programming style aside from what it took to conver the fortran over to working code so it is implemented as a single function simialr to the original.
+
+* Original research paper: http://moid.cbk.waw.pl/orbity/static/MOID.pdf
+* Original Fotran Code: http://moid.cbk.waw.pl/orbity/static/MOID.F
 
 ## GNU OCTAVE RESULTS
-Running the MOID_Test script on Octave gives the following results on a Ryzen R7 3800XT:
+Running the MOID_Test script on Octave will execute 20 tests which should result in the table below.  This has not been tested in Matlab but should probably work there as well.  On a Ryzen R7 3800XT the time Elapsed for 20 test cases: 0.789262 seconds (Average of ~40 ms per iteration).
 
 Test  | MOID - Calc | MOID - Expected | Dmin-Calc | Dmin Expected 
  ------|----------------|-------------------------|------------------|------------------
@@ -32,7 +35,7 @@ Test  | MOID - Calc | MOID - Expected | Dmin-Calc | Dmin Expected
 19 |     0.00000785937722 |       0.00000785853673  |      0.00433327  |    0.00433330
 20 |     0.00001189234779 |       0.00001189165231  |      0.01003500  |    0.01003500
 
-Time Elapsed for 20 test cases: 0.789262 seconds
+
 
 ## C++ RESULTS
 
