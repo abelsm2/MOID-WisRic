@@ -1,10 +1,15 @@
 # MOID
 Implementation of Minimum Orbit Intersection Distance Algorithms
 
+## BACKGROUND
 
+## ORIGINAL FORTRAN
+http://moid.cbk.waw.pl/orbity/static/MOID.F
+
+## GNU OCTAVE RESULTS
 Running the MOID_Test script on Octave gives the following results on a Ryzen R7 3800XT:
 
-Test  | MOID - Calc    |         MOID - Actual   |        Dmin-Calc |      Dmin-Actual 
+Test  | MOID - Calc | MOID - Expected | Dmin-Calc | Dmin Expected 
  ------|----------------|-------------------------|------------------|------------------
 1 |      0.13455874619444 |       0.13455874348909  |      0.13467195  |    0.13467190
 2 |      0.00289925626282 |       0.00289925623680  |      0.01513159   |   0.01513160
@@ -28,4 +33,8 @@ Test  | MOID - Calc    |         MOID - Actual   |        Dmin-Calc |      Dmin-
 20 |     0.00001189234779 |       0.00001189165231  |      0.01003500  |    0.01003500
 
 Time Elapsed for 20 test cases: 0.789262 seconds
+
+## C++ RESULTS
+
+
 
