@@ -37,7 +37,7 @@ Test  | MOID Calc | MOID Expected | Dmin Calc | Dmin Expected
 
 ## VC++ RESULTS
 
-On a Ryzen R7 3800XT the average Execution Time is ~14 microseconds.  This was tested by running 10e6 cases and perturbing the original data slightly to generate 10e6 unique orbits similar to the ones provided in the research paper.  This also had the effect of testing hyperbolic orbits when the eccentricity went over 1.0.  While this was done to test the speed of the algorithm, it is unknown if the actual calculated valued represent the correct value.
+Visual C++ code was created using Visual Studio 2019.  On a Ryzen R7 3800XT the average Execution Time is ~14 microseconds.  This was tested by running 10e6 cases and perturbing the original data slightly to generate 10e6 unique orbits similar to the ones provided in the research paper.  This also had the effect of testing hyperbolic orbits when the eccentricity went over 1.0.  While this was done to test the speed of the algorithm, it is unknown if the actual calculated valued represent the correct value.
 
 Using the same 20 test cases as those contained within the research paper, the results are presented below:
 
