@@ -124,8 +124,6 @@ function [moid, dist_min_sq] = MOID_WisRic (semiMajorAxis, eccentricity, argPeri
     tmpmoid(2) = 1e6;
     tmpmoid(3) = 1e6;
     tmpmoid(4) = 1e6;
-    iii1 = 0;
-    jjj1 = 0;
     
 ##.....Looking for the minima with rotating meridional plane
 
