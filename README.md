@@ -1,5 +1,5 @@
 # MOID
-Implementation of Minimum Orbit Intersection Distance Algorithms
+Implementation of Minimum Orbit Intersection Distance Algorithm created by T. Wisniowski and H. Rickman.
 
 ## BACKGROUND
 I found some Fortran code created by various researchers for the calculation of MOID.  This repo is simply a conversion of those codes into other languages that I found useful along with tests to show that the code is working properly.  As you can see below, I was able to get pretty decent matches to the values published by the original authors with the differences possibly due to a more precise value of Pi being used within Octave and C++.
