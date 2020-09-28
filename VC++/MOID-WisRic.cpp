@@ -238,14 +238,12 @@ long double moid_wisric(const std::vector<long double>& semiMajorAxis,
     //......initial parameters                          
     long double trueB = -2 * cstep;
     long double moid = 1e6;
-    long double dist_o = 1E6;  // something big
+    long double dist_o = 166;  // something big
     tmpmoid[1] = 1e6;
     tmpmoid[2] = 1e6;
     tmpmoid[3] = 1e6;
     tmpmoid[4] = 1e6;
-    int iii1 = 0;
-    int jjj1 = 0;
-    
+        
     //.....Looking for the minima with rotating meridional plane
     
     //.......a)at first we calculate the coordinates of two additional positions of the plane to create first triplet
