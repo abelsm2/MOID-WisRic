@@ -29,7 +29,7 @@ static std::mt19937_64 urng(std::chrono::high_resolution_clock::now().time_since
 int main() {
 
     // This is the number of cases that will be run
-    const int numCases(100000);  
+    const int numCases(1000);  
 
     // uniform random number distribution for perturbing variables
     std::uniform_real_distribution<double> rnd(0.8, 1.2);
@@ -155,7 +155,7 @@ long double moid_wisric(const std::vector<long double>& semiMajorAxis,
     long double tmp1, tmp2, step, threshold;
     long double dist, dist_min, dist_oo, trueB_o, trueB_m;
     long double longit, longit_m, longit_o;
-    long double tmptrueB[11]{ 0 }, tmplongit[11]{ 0 };
+    long double tmptrueB[11]{ 0 }, tmplongit[11]{ 0 }, tmpmoid[11]{ 0 };
     long double rAt[4]{ 0 }, rBt[4]{ 0 }, Axt[4]{ 0 }, Ayt[4]{ 0 }, Bxt[4]{ 0 }, Byt[4]{ 0 }, Bzt[4]{ 0 };
     int nmax;
 
@@ -239,7 +239,10 @@ long double moid_wisric(const std::vector<long double>& semiMajorAxis,
     long double trueB = -2 * cstep;
     long double moid = 1e6;
     long double dist_o = 1E6;  // something big
-    long double tmpmoid[5] = { 1e6 };
+    tmpmoid[1] = 1e6;
+    tmpmoid[2] = 1e6;
+    tmpmoid[3] = 1e6;
+    tmpmoid[4] = 1e6;
     int iii1 = 0;
     int jjj1 = 0;
     
