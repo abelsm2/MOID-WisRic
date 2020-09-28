@@ -4,7 +4,7 @@ Implementation of Minimum Orbit Intersection Distance Algorithm created by T. Wi
 ## BACKGROUND
 I found some Fortran code created by various researchers for the calculation of MOID.  This repo is simply a conversion of those codes into other languages that I found useful along with tests to show that the code is working properly.  As you can see below, I was able to get pretty decent matches to the values published by the original authors with the differences possibly due to a more precise value of Pi being used within Octave and C++.
 
-I did not make any real attempt to optimize the code or use more modern programming style aside from what it took to conver the fortran over to working code so it is implemented as a single function simialr to the original.
+I did not make any real attempt to optimize the code or use more modern programming style aside from what it took to convert the fortran over to working code so it is implemented as a single function simialr to the original.
 
 * Original research paper: http://moid.cbk.waw.pl/orbity/static/MOID.pdf
 * Original Fotran Code: http://moid.cbk.waw.pl/orbity/static/MOID.F
