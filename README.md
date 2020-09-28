@@ -35,9 +35,33 @@ Test  | MOID Calc | MOID Expected | Dmin Calc | Dmin Expected
 19 |     0.00000785937722 |       0.00000785853673  |      0.00433327  |    0.00433330
 20 |     0.00001189234779 |       0.00001189165231  |      0.01003500  |    0.01003500
 
+## VC++ RESULTS
 
+On a Ryzen R7 3800XT the average Execution Time is ~14 microseconds.  This was tested by running 10e6 cases and perturbing the original data slight to generate 10e6 unique orbits similar to the ones provided in the research paper.  This also had the effect of testing hyperbolic orbits when the eccentricity went over 1.0.  While this was done to test the speed of the algorithm, it is unknown if the actual calculated valued represent the correct value.
 
-## C++ RESULTS
+Using the same 20 test cases as those contained within the research paper, the results are presented below:
 
+MOID Calc | MOID Expected |
+ ------|---------------
+0.13455874619444      |  0.13455874348909
+0.00289925626282      |  0.00289925623680
+0.07817951806849      |  0.07817951779390
+0.08735595327857      |  0.08735595371552
+0.14532630845989      |  0.14532630925408
+0.26938418767873      |  0.26938418933051
+0.54491059218717      |  0.54491059333263
+0.70855958463834      |  0.70855959609279
+0.03943927452247      |  0.03943927946198
+0.18225709316049      |  0.18225709092897
+0.14766834353602      |  0.14766834758223
+0.00010493251424      |  0.00010493251317
+0.00030783183885      |  0.00030783183432
+0.00098583168085      |  0.00098583168214
+0.20707624718093      |  0.20707625146740
+0.00000003860552      |  0.00000003815330
+0.00000419364072      |  0.00000419348257
+0.00000627750835      |  0.00000627704688
+0.00000785937722      |  0.00000785853673
+0.00001189234779      |  0.00001189165231
 
 
