@@ -20,7 +20,7 @@
 #include <random>
 
 // declarations
-long double moid_wisric(const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&);
+std::vector<long double> moid_wisric(const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&, const std::vector<long double>&);
 
 // random number generator for methods like shuffle
 static std::mt19937_64 urng(std::chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -34,7 +34,7 @@ int main() {
     // uniform random number distribution for perturbing variables
     std::uniform_real_distribution<double> rnd(0.8, 1.2);
 
-    std::vector<long double> moid(numCases,0);
+    std::vector<std::vector<long double>> moid(numCases,std::vector<long double> (3,0));
     std::vector<std::vector<long double>> semiMajorAxis(numCases, std::vector<long double>(2,0));
     std::vector<std::vector<long double>> eccentricity(numCases, std::vector<long double>(2, 0));
     std::vector<std::vector<long double>> inclination(numCases, std::vector<long double>(2, 0));
@@ -119,7 +119,9 @@ int main() {
         assert(moid[i] - Asteroids[i][5] < 1e-8);
 
         // for all builds, print out the test cases that match the data above
-        std::cout << std::fixed << std::setprecision(14) << moid[i] << "\t" << Asteroids[i][5] << std::endl;
+        std::cout << std::fixed << std::setprecision(14) << "MOID: " << moid[i][0] << "\t" << Asteroids[i][5] 
+                                << "\tv(A): " << std::setprecision(5) << std::setw(8) << moid[i][1] 
+                                << "\tv(B): " << std::setw(8) << moid[i][2] << std::endl;
     }
 
     std::chrono::duration<double, std::micro> averageElapsed = (finish - start) / numCases;
@@ -144,11 +146,11 @@ int main() {
 // The program is free and may be used without limits as the core of any other program.
 // The authors will appreciate for mentioning them, when the program will appear to be useful.
 
-long double moid_wisric(const std::vector<long double>& semiMajorAxis, 
-                        const std::vector<long double>& eccentricity, 
-                        const std::vector<long double>& argPeriapsis, 
-                        const std::vector<long double>& RAAN, 
-                        const std::vector<long double>& inclination) {
+std::vector<long double> moid_wisric(const std::vector<long double>& semiMajorAxis,
+                                     const std::vector<long double>& eccentricity, 
+                                     const std::vector<long double>& argPeriapsis, 
+                                     const std::vector<long double>& RAAN, 
+                                     const std::vector<long double>& inclination) {
 
     // variables used in loops but that need scope outside of those loops
     long double rA, rA2, rB, sintmp, costmp, Bz_sq ;
@@ -613,7 +615,34 @@ long double moid_wisric(const std::vector<long double>& semiMajorAxis,
     //###### END OF PARALLEL TUNING ##########################################
     }
 
-    return sqrt(moid); // we dealt with squares
+    // added ability to return the true anomaly where the distance is minimum in the range -pi to +pi
+    long double trueAnomalyA, trueAnomalyB;
+    
+    if (longit_m > M_PI) {
+        trueAnomalyA = 2 * M_PI - longit_m;
+    }
+     
+    else if (longit_m < -M_PI) {
+        trueAnomalyA = 2 * M_PI + longit_m;
+    }
+    
+    else {
+        trueAnomalyA = -longit_m;
+    }
+            
+    if (trueB_m > M_PI) {
+        trueAnomalyB = 2 * M_PI - trueB_m;
+    }
+     
+    else if (trueB_m < -M_PI) {
+        trueAnomalyB = -2 * M_PI + trueB_m;
+    }
+
+    else {
+        trueAnomalyB = -trueB_m;
+    }
+        
+    return std::vector<long double> {sqrt(moid), trueAnomalyA, trueAnomalyB}; // we dealt with squares
 }
 
 
