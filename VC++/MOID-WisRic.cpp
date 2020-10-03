@@ -25,7 +25,6 @@ std::vector<long double> moid_wisric(const std::vector<long double>&, const std:
 // random number generator for methods like shuffle
 static std::mt19937_64 urng(std::chrono::high_resolution_clock::now().time_since_epoch().count());
 
-
 int main() {
 
     // This is the number of cases that will be run
@@ -116,7 +115,7 @@ int main() {
     for (int i = 0; i < 20; i++) {
 
         // for a debug build, verify that we are getting the correct results to within a small error
-        assert(moid[i] - Asteroids[i][5] < 1e-8);
+        assert((moid[i][0] - Asteroids[i][5]) < 1e-8);
 
         // for all builds, print out the test cases that match the data above
         std::cout << std::fixed << std::setprecision(14) << "MOID: " << moid[i][0] << "\t" << Asteroids[i][5] 
@@ -159,6 +158,7 @@ std::vector<long double> moid_wisric(const std::vector<long double>& semiMajorAx
     long double longit, longit_m, longit_o;
     long double tmptrueB[11]{ 0 }, tmplongit[11]{ 0 }, tmpmoid[11]{ 0 };
     long double rAt[4]{ 0 }, rBt[4]{ 0 }, Axt[4]{ 0 }, Ayt[4]{ 0 }, Bxt[4]{ 0 }, Byt[4]{ 0 }, Bzt[4]{ 0 };
+    long double moidStart = 1e50;
     int nmax;
 
     //....orbital parameters of body A
@@ -239,12 +239,12 @@ std::vector<long double> moid_wisric(const std::vector<long double>& semiMajorAx
     
     //......initial parameters                          
     long double trueB = -2 * cstep;
-    long double moid = 1e6;
-    long double dist_o = 166;  // something big
-    tmpmoid[1] = 1e6;
-    tmpmoid[2] = 1e6;
-    tmpmoid[3] = 1e6;
-    tmpmoid[4] = 1e6;
+    long double moid = moidStart;
+    long double dist_o = moidStart;  // something big
+    tmpmoid[1] = moidStart;
+    tmpmoid[2] = moidStart;
+    tmpmoid[3] = moidStart;
+    tmpmoid[4] = moidStart;
         
     //.....Looking for the minima with rotating meridional plane
     
@@ -372,7 +372,7 @@ std::vector<long double> moid_wisric(const std::vector<long double>& semiMajorAx
                 sintmp = sin(tmptrueB[iii] + argpeB);
                 costmp = cos(tmptrueB[iii] + argpeB);
                 tmplongit[iii] = atan2(sintmpo * costmp + sintmp * cost, costmpo * costmp - sintmp * sint); // compute the longitude for A
-                tmpmoid[iii] = 1e6; // something big
+                tmpmoid[iii] = moidStart; // something big
             }
         }
         ////////////////////////// END OF "WATER" PROCEDURE" ///////////////////////////////
